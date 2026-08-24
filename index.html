@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8 Meses Juntos 💖 (Zoom Interactivo)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #f0e6ff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+            position: relative;
+            /* Fondo ajustado para cubrir toda la pantalla perfectamente */
+            background: url('https://cdn.phototourl.com/free/2026-08-24-d50dca4f-be0f-4ee2-b020-310671af46ce.jpg') no-repeat center center fixed;
+            background-size: cover;
+            background-color: #000000;
+        }
+
+        /* Capa oscura sutil encima del fondo */
+        .bg-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(5, 2, 10, 0.4);
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 950px;
+            /* Contenedor transparente */
+            background: rgba(0, 0, 0, 0); 
+            border: 2px solid rgba(138, 43, 226, 0.7);
+            box-shadow: 0 0 35px rgba(138, 43, 226, 0.4), inset 0 0 20px rgba(138, 43, 226, 0.15);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+            position: relative;
+            z-index: 1; /* Por debajo del zoom */
+        }
+
+        h1 {
+            font-size: 2.3rem;
+            color: #d1b3ff;
+            margin-bottom: 25px;
+            text-shadow: 0 0 10px rgba(186, 85, 211, 0.8), 0 0 20px rgba(138, 43, 226, 0.6);
+            letter-spacing: 2px;
+        }
+
+        .content-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            align-items: center;
+        }
+
+        @media (min-width: 768px) {
+            .content-grid {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .text-section {
+                flex: 1.1;
+                text-align: left;
+            }
+            .photo-section {
+                flex: 0.9;
+            }
+        }
+
+        .text-section p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #f5f0ff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 1.0), 0 0 5px rgba(138, 43, 226, 0.5);
+        }
+
+        /* Contenedor y marco para la foto */
+        .photo-frame {
+            width: 100%;
+            max-width: 350px;
+            height: 440px;
+            border: 4px solid #a4508b;
+            border-radius: 15px;
+            background: rgba(0, 0, 0, 0.6);
+            box-shadow: 0 0 20px rgba(164, 80, 139, 0.6);
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+            transition: transform 0.3s ease;
+        }
+
+        .photo-frame:hover {
+            transform: scale(1.02);
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            cursor: pointer; /* Indica que se puede hacer clic */
+            transition: opacity 0.3s ease;
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 0.9rem;
+            color: #b19cd9;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        /* ESTILOS NUEVOS PARA EL ZOOM */
+        
+        /* El contenedor que se pone encima de todo */
+        #zoom-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            /* Fondo semitransparente oscuro para atenuar el fondo */
+            background: rgba(0, 0, 0, 0.85); 
+            display: none; /* Oculto por defecto */
+            justify-content: center;
+            align-items: center;
+            z-index: 1000; /* Asegura que esté encima de todo */
+            cursor: zoom-out; /* Indica cómo cerrar */
+            backdrop-filter: blur(3px); /* Efecto extra chulo en navegadores modernos */
+        }
+
+        /* La imagen ampliada */
+        #zoom-container img {
+            max-width: 90vw;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 0 50px rgba(255, 255, 255, 0.3);
+            /* Pequeña animación al aparecer */
+            animation: zoomIn 0.3s ease;
+        }
+
+        /* Animación de aparición */
+        @keyframes zoomIn {
+            from { transform: scale(0.5); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-overlay"></div>
+
+    <div class="container">
+        <h1>✨ Celebrando Nuestros 8 Meses Juntos ✨</h1>
+        
+        <div class="content-grid">
+            <!-- Sección del Texto con Emojis -->
+            <div class="text-section">
+                <p>
+                    Quiero empezar diciendo lo mucho que te amo 💖. Ya son 8 meses juntos, quiero que sigamos así juntos y amándonos siempre 🌹. Quiero que esto no se pierda y se termine porque tú y solo tú vas a ser mi futura esposa 💍👰. Yo te amo demasiado enserio, no quiero que lo olvides 🥺💕. Vamos a estar en las buenas y malas como siempre vida mía 🤝✨. Ya mismo cumplimos 1 añito, sí lo vamos a lograr vida mía, enserio no quiero que dudes de eso amor 📅💫. Voy a estar para ti mi amor mío, mi niña bella, hermosa, preciosa eres mi todo, mi niñaaaa te amo con todo mi ser 👩‍❤️‍👨 mi corazón explota de felicidad infinito ♾️❤️🥰.
+                </p>
+            </div>
+
+            <!-- Sección de la Imagen del Cuadro -->
+            <div class="photo-section">
+                <div class="photo-frame">
+                    <!-- AÑADIDO ID 'special-image' PARA DETECTAR EL CLIC -->
+                    <img src="https://cdn.phototourl.com/free/2026-08-24-71ce3815-9b33-4689-94cf-ed7939f25e2e.jpg" alt="Nuestra foto especial" id="special-image">
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            Hecho con todo el amor del mundo para ti ❤️
+        </div>
+    </div>
+
+    <!-- CONTENEDOR OCULTO PARA EL ZOOM (Añadido al final del body) -->
+    <div id="zoom-container">
+        <img src="" alt="Vista ampliada" id="zoomed-image">
+    </div>
+
+    <!-- AÑADIDO JAVASCRIPT NECESARIO -->
+    <script>
+        // Obtenemos los elementos del DOM
+        const specialImage = document.getElementById('special-image');
+        const zoomContainer = document.getElementById('zoom-container');
+        const zoomedImage = document.getElementById('zoomed-image');
+
+        // Función para abrir el zoom
+        specialImage.addEventListener('click', function() {
+            zoomedImage.src = this.src; // Copiamos la fuente de la imagen
+            zoomContainer.style.display = 'flex'; // Mostramos el contenedor
+        });
+
+        // Función para cerrar el zoom (al hacer clic en cualquier parte del contenedor oscuro)
+        zoomContainer.addEventListener('click', function() {
+            zoomContainer.style.display = 'none'; // Ocultamos el contenedor
+        });
+    </script>
+
+</body>
+</html>
